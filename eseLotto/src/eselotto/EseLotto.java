@@ -7,6 +7,8 @@ package eselotto;
 
 import java.util.Scanner;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,39 +28,40 @@ public class EseLotto {
         Semaphore s4 = new Semaphore(-2);
         System.out.println("Inserire il numero di estrazioni che si desidera simulare");
         int nEstrazioni = input.nextInt();
-        
-        while(nEstrazioni <= 0){
+
+        while (nEstrazioni <= 0) {
             System.out.println("Scelta non valida, reinserire");
             nEstrazioni = input.nextInt();
         }
-        
+
         System.out.println("Inserire il primo numero che si vuole scommettere");
         int primoNum = input.nextInt();
-        
-        while(primoNum < 1 && primoNum > 90 ){
+
+        while (primoNum < 1 && primoNum > 90) {
             System.out.println("Scelta non valida, reinserire");
             primoNum = input.nextInt();
         }
-        
+
         System.out.println("Inserire il secondo numero che si vuole scommettere");
+
         int secondoNum = input.nextInt();
-        
-        while(secondoNum < 1 && secondoNum > 90 && secondoNum != primoNum){
+
+        while (secondoNum < 1 && secondoNum > 90 && secondoNum != primoNum) {
             System.out.println("Scelta non valida, reinserire");
             secondoNum = input.nextInt();
         }
-        
-        DatiCondivisi dati = new DatiCondivisi(nEstrazioni,primoNum,secondoNum,s1,s2,s3,s4);
+
+        DatiCondivisi dati = new DatiCondivisi(nEstrazioni, primoNum, secondoNum, s1, s2, s3, s4);
         ThEstrai th1 = new ThEstrai(dati);
         ThCercaPrimo th2 = new ThCercaPrimo(dati);
         ThCercaSecondo th3 = new ThCercaSecondo(dati);
-        
+
         th1.start();
         th2.start();
         th3.start();
         dati.waitSem4();
-        System.out.println("Hai effettuato "+dati.getVincite()+" vincite");
-        
+        System.out.println("Hai effettuato " + dati.getVincite() + " vincite");
+
     }
-    
+
 }

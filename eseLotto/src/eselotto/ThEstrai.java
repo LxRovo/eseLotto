@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class ThEstrai extends Thread {
 
-    private DatiCondivisi ptrDati;
+    private final DatiCondivisi ptrDati;
 
     public ThEstrai(DatiCondivisi ptrDati) {
         this.ptrDati = ptrDati;
@@ -24,14 +24,14 @@ public class ThEstrai extends Thread {
 
         Random ran = new Random();
 
-        int nEstrazioni = ptrDati.getnEstrazioni();
-        //si blocca qui
-        Ruota r = ptrDati.getR();
+        int est = ptrDati.getnEstrazioni();
+        
+        Ruota ru = ptrDati.getR();
 
         int maxElem = ptrDati.getMaxElem();
         int i = 1;
 
-        while (i <= nEstrazioni) {
+        while (i <= est) {
 
             int estratti[] = new int[maxElem];
             for (int j = 0; j < maxElem; j++) {
@@ -49,7 +49,7 @@ public class ThEstrai extends Thread {
                 }
 
             }
-            r.setEstratti(estratti);
+            ru.setEstratti(estratti);
 
             i++;
             ptrDati.signalSem1();
