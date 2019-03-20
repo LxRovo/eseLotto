@@ -7,8 +7,6 @@ package eselotto;
 
 import java.util.Scanner;
 import java.util.concurrent.Semaphore;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -59,7 +57,10 @@ public class EseLotto {
         th1.start();
         th2.start();
         th3.start();
+        
         dati.waitSem4();
+        
+          
         System.out.println("Hai effettuato " + dati.getVincite() + " vincite");
 
     }
