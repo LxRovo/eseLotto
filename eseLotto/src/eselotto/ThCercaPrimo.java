@@ -21,12 +21,13 @@ public class ThCercaPrimo extends Thread {
     public void run() {
         
         
-        ptrDati.waitSem1();
+        
         int j = 1;
         int nEstrazioni = ptrDati.getnEstrazioni();
 
         while (j <= nEstrazioni) {
             
+            ptrDati.waitSem1();
             Ruota r = ptrDati.getR();
             int primo = ptrDati.getPrimo();
             int maxElem = ptrDati.getMaxElem();

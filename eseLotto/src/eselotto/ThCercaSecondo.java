@@ -20,11 +20,13 @@ public class ThCercaSecondo extends Thread {
     @Override
     public void run() {
         
-        ptrDati.waitSem2();
+        
         int j = 1;
         int nEstrazioni = ptrDati.getnEstrazioni();
 
         while (j <= nEstrazioni) {
+            
+            ptrDati.waitSem2();
             
             Ruota r = ptrDati.getR();
             int secondo = ptrDati.getSecondo();

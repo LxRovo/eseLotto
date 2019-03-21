@@ -60,7 +60,7 @@ public class DatiCondivisi {
         return trovatoPrimo;
     }
 
-    public synchronized void setTrovatoPrimo(boolean trovatoPrimo) {
+    public void setTrovatoPrimo(boolean trovatoPrimo) {
         this.trovatoPrimo = trovatoPrimo;
     }
 
@@ -72,7 +72,7 @@ public class DatiCondivisi {
         this.trovatoSecondo = trovatoSecondo;
     }
 
-    public synchronized void waitSem1() {
+    public void waitSem1() {
         try {
             s1.acquire();
         } catch (InterruptedException ex) {
@@ -80,11 +80,11 @@ public class DatiCondivisi {
         }
     }
 
-    public synchronized void signalSem1() {
+    public void signalSem1() {
         s1.release();
     }
 
-    public synchronized void waitSem2() {
+    public void waitSem2() {
         try {
             s2.acquire();
         } catch (InterruptedException ex) {
@@ -92,11 +92,11 @@ public class DatiCondivisi {
         }
     }
 
-    public synchronized void signalSem2() {
+    public void signalSem2() {
         s2.release();
     }
     
-    public synchronized void waitSem3() {
+    public void waitSem3() {
         try {
             s3.acquire();
         } catch (InterruptedException ex) {
@@ -104,11 +104,11 @@ public class DatiCondivisi {
         }
     }
 
-    public synchronized void signalSem3() {
+    public void signalSem3() {
         s3.release();
     }
     
-    public synchronized void waitSem4() {
+    public void waitSem4() {
         try {
             s4.acquire();
         } catch (InterruptedException ex) {
@@ -116,13 +116,15 @@ public class DatiCondivisi {
         }
     }
 
-    public synchronized void signalSem4() {
+    public void signalSem4() {
         s4.release();
     }
 
     public void azzeraDati() {
         int t[] = new int[maxElem];
         this.r.setEstratti(t);
+        trovatoPrimo = false;
+        trovatoSecondo = false;
     }
 
     

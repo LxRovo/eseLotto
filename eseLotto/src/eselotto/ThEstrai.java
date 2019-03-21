@@ -25,7 +25,7 @@ public class ThEstrai extends Thread {
         Random ran = new Random();
 
         int est = ptrDati.getnEstrazioni();
-        
+
         Ruota ru = ptrDati.getR();
 
         int maxElem = ptrDati.getMaxElem();
@@ -49,6 +49,9 @@ public class ThEstrai extends Thread {
                 }
 
             }
+
+            System.out.println(estratti[0] + ", " + estratti[1] + ", " + estratti[2] + ", " + estratti[3] + ", " + estratti[4] + ". ");
+
             ru.setEstratti(estratti);
 
             i++;
@@ -57,6 +60,7 @@ public class ThEstrai extends Thread {
             ptrDati.waitSem3();
             ptrDati.waitSem3();
             ptrDati.controllaVincita();
+            ptrDati.azzeraDati();
 
         }
         ptrDati.signalSem4();

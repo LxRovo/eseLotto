@@ -35,7 +35,7 @@ public class EseLotto {
         System.out.println("Inserire il primo numero che si vuole scommettere");
         int primoNum = input.nextInt();
 
-        while (primoNum < 1 && primoNum > 90) {
+        while (primoNum < 1 || primoNum > 90) {
             System.out.println("Scelta non valida, reinserire");
             primoNum = input.nextInt();
         }
@@ -44,7 +44,7 @@ public class EseLotto {
 
         int secondoNum = input.nextInt();
 
-        while (secondoNum < 1 && secondoNum > 90 && secondoNum != primoNum) {
+        while (secondoNum < 1 || secondoNum > 90 || secondoNum == primoNum) {
             System.out.println("Scelta non valida, reinserire");
             secondoNum = input.nextInt();
         }
@@ -61,7 +61,6 @@ public class EseLotto {
         dati.waitSem4();
         
           
-        System.out.println("Hai effettuato " + dati.getVincite() + " vincite");
 
     }
 
